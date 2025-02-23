@@ -1,0 +1,327 @@
+@import "../../responsive.scss";
+
+.card {
+  display: flex;
+  gap: 20px;
+  position: relative;
+
+  .imageContainer {
+    flex: 2;
+    height: 200px;
+    position: relative;
+
+    @include md {
+      display: none;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+    
+    .statusBadge {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      padding: 5px 10px;
+      border-radius: 4px;
+      color: white;
+      font-weight: 600;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      z-index: 5;
+      
+      &.soldBadge {
+        background-color: #f44336;
+      }
+      
+      &.occupiedBadge {
+        background-color: #ff9800;
+      }
+      
+      &.availableBadge {
+        background-color: #4CAF50;
+      }
+    }
+  }
+  
+  // Add mobile-friendly status indicators for when images aren't visible
+  @include md {
+    .statusBadgeSmall {
+      display: inline-block;
+      margin-left: 8px;
+      padding: 2px 6px;
+      border-radius: 3px;
+      color: white;
+      font-weight: 600;
+      font-size: 10px;
+      text-transform: uppercase;
+      
+      &.soldBadge {
+        background-color: #f44336;
+      }
+      
+      &.occupiedBadge {
+        background-color: #ff9800;
+      }
+      
+      &.availableBadge {
+        background-color: #4CAF50;
+      }
+    }
+  }
+
+  .textContainer {
+    flex: 3;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 10px;
+
+    img {
+      width: 16px;
+      height: 16px;
+    }
+
+    .title {
+      font-size: 20px;
+      font-weight: 600;
+      color: #444;
+      transition: all 0.4s ease;
+
+      &:hover {
+        color: #000;
+        scale: 1.01;
+      }
+    }
+
+    .propertyInfo {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      
+      @include md {
+        .address, .city {
+          position: relative;
+          padding-left: 25px;
+          
+          img {
+            position: absolute;
+            left: 0;
+            top: 2px;
+          }
+        }
+      }
+    }
+
+    .address {
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      color: #888;
+    }
+
+    .price {
+      font-size: 20px;
+      font-weight: 300;
+      padding: 5px;
+      border-radius: 5px;
+      background-color: rgba(254, 205, 81, 0.438);
+      width: max-content;
+    }
+
+    .bottom {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+
+      .features {
+        display: flex;
+        gap: 20px;
+        font-size: 14px;
+
+        .feature {
+          display: flex;
+          align-items: center;
+          gap: 5px;
+          background-color: whitesmoke;
+          padding: 5px;
+          border-radius: 5px;
+        }
+      }
+
+      .icons {
+        display: flex;
+        gap: 20px;
+
+        .icon {
+          border: 1px solid #999;
+          padding: 2px 5px;
+          border-radius: 5px;
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          &:hover {
+            background-color: lightgray;
+          }
+
+          &.deleteIcon {
+            background-color: rgba(#f44336, 0.1);
+            border-color: #f44336;
+            
+            &:hover {
+              background-color: rgba(#f44336, 0.2);
+            }
+          }
+
+          &.statusIcon {
+            background-color: rgba(#4CAF50, 0.1);
+            border-color: #4CAF50;
+            
+            &:hover {
+              background-color: rgba(#4CAF50, 0.2);
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  .deleteConfirm {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    z-index: 10;
+    
+    .confirmDialog {
+      background-color: white;
+      padding: 20px;
+      border-radius: 8px;
+      text-align: center;
+      width: 80%;
+      max-width: 300px;
+      
+      p {
+        margin-bottom: 20px;
+        font-weight: 500;
+      }
+      
+      .confirmButtons {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        
+        button {
+          padding: 8px 20px;
+          border: none;
+          border-radius: 4px;
+          cursor: pointer;
+          font-weight: 500;
+          
+          &.yesBtn {
+            background-color: #f44336;
+            color: white;
+            
+            &:hover {
+              background-color: darken(#f44336, 10%);
+            }
+          }
+          
+          &.noBtn {
+            background-color: #e0e0e0;
+            
+            &:hover {
+              background-color: darken(#e0e0e0, 10%);
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  .statusDropdown {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    z-index: 10;
+    
+    .dropdownMenu {
+      background-color: white;
+      padding: 20px;
+      border-radius: 8px;
+      width: 80%;
+      max-width: 300px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      
+      h4 {
+        margin-bottom: 15px;
+        font-size: 16px;
+        color: #333;
+        text-align: center;
+        border-bottom: 1px solid #eee;
+        padding-bottom: 10px;
+      }
+      
+      ul {
+        list-style: none;
+        padding: 0;
+        
+        li {
+          padding: 10px 15px;
+          border-radius: 4px;
+          cursor: pointer;
+          transition: background-color 0.2s;
+          margin-bottom: 5px;
+          position: relative;
+          display: flex;
+          align-items: center;
+          
+          &:hover {
+            background-color: #f5f5f5;
+          }
+          
+          &.active {
+            background-color: rgba(#4CAF50, 0.1);
+            font-weight: 500;
+            color: #4CAF50;
+            
+            &:before {
+              content: "";
+              width: 8px;
+              height: 8px;
+              background-color: #4CAF50;
+              border-radius: 50%;
+              position: absolute;
+              left: 5px;
+            }
+            
+            &:hover {
+              background-color: rgba(#4CAF50, 0.2);
+            }
+          }
+        }
+      }
+    }
+  }
+}

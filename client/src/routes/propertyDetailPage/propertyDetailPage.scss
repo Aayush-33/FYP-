@@ -1,0 +1,305 @@
+@import "../../responsive.scss";
+
+.propertyDetailPage {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  height: 100%;
+  overflow-y: auto;
+
+  &.loading, &.error {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    font-size: 20px;
+    color: #666;
+  }
+
+  &.error {
+    color: #d32f2f;
+  }
+
+  .pageHeader {
+    margin-bottom: 20px;
+    
+    .backButton {
+      display: inline-flex;
+      align-items: center;
+      padding: 10px 15px;
+      background-color: #f5f5f5;
+      border-radius: 5px;
+      color: #333;
+      text-decoration: none;
+      font-weight: 500;
+      transition: background-color 0.2s;
+      
+      &:hover {
+        background-color: #e5e5e5;
+      }
+    }
+  }
+
+  .detailCard {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    margin-bottom: 30px;
+
+    .cardHeader {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px;
+      background-color: #fcf5f3;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 20px;
+      margin-bottom: 20px;
+      
+      @include md {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+      }
+
+      h1 {
+        margin: 0;
+        font-weight: 600;
+        font-size: 24px;
+        color: #333;
+        margin-bottom: 10px;
+        
+        @include md {
+          font-size: 1.5rem;
+        }
+      }
+
+      .statusAndPrice {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        flex-wrap: wrap;
+      }
+
+      .price {
+        background-color: #fece51;
+        padding: 6px 12px;
+        border-radius: 5px;
+        font-weight: 600;
+        font-size: 1.2rem;
+      }
+
+      .statusBadge {
+        padding: 6px 12px;
+        border-radius: 4px;
+        color: white;
+        font-weight: 600;
+        font-size: 14px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        
+        &.soldBadge {
+          background-color: #f44336;
+        }
+        
+        &.occupiedBadge {
+          background-color: #ff9800;
+        }
+        
+        &.availableBadge {
+          background-color: #4CAF50;
+        }
+      }
+    }
+
+    .cardBody {
+      padding: 20px;
+
+      .imageSlider {
+        margin-bottom: 30px;
+        max-height: 500px;
+        overflow: hidden;
+        border-radius: 10px;
+        
+        .noImage {
+          width: 100%;
+          height: 400px;
+          object-fit: cover;
+          border-radius: 10px;
+        }
+      }
+
+      .mainInfo {
+        margin-bottom: 30px;
+
+        .location {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          color: #666;
+          margin-bottom: 15px;
+          font-size: 1rem;
+
+          img {
+            width: 18px;
+            height: 18px;
+          }
+        }
+        
+        .propertyTypesWrapper {
+          display: flex;
+          gap: 30px;
+          margin-bottom: 20px;
+          flex-wrap: wrap;
+          
+          .propertyType {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            
+            .label {
+              font-weight: 500;
+              color: #555;
+            }
+            
+            .value {
+              text-transform: capitalize;
+              background-color: #f5f5f5;
+              padding: 5px 10px;
+              border-radius: 5px;
+            }
+          }
+        }
+        
+        .detailsGrid {
+          display: grid;
+          grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+          gap: 20px;
+          
+          @include md {
+            grid-template-columns: 1fr;
+          }
+          
+          .detailItem {
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 8px;
+            
+            .label {
+              display: block;
+              font-weight: 500;
+              color: #555;
+              margin-bottom: 5px;
+            }
+            
+            .value {
+              color: #666;
+            }
+          }
+        }
+      }
+      
+      .proximityInfo {
+        margin-bottom: 30px;
+        
+        h2 {
+          font-size: 1.4rem;
+          font-weight: 500;
+          margin-bottom: 20px;
+          color: #333;
+        }
+        
+        .proximityGrid {
+          display: grid;
+          grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+          gap: 15px;
+          
+          .proximityItem {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 8px;
+            
+            img {
+              width: 24px;
+              height: 24px;
+            }
+            
+            span {
+              font-size: 1rem;
+              color: #555;
+            }
+          }
+        }
+      }
+      
+      .description {
+        h2 {
+          font-size: 1.4rem;
+          font-weight: 500;
+          margin-bottom: 20px;
+          color: #333;
+        }
+        
+        div {
+          line-height: 1.6;
+          color: #555;
+          
+          p {
+            margin-bottom: 15px;
+          }
+        }
+      }
+    }
+    
+    .cardFooter {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px;
+      background-color: #fcf5f3;
+      border-top: 1px solid #eee;
+      
+      @include md {
+        flex-direction: column;
+        gap: 20px;
+      }
+      
+      .ownerInfo {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        
+        .ownerAvatar {
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+          object-fit: cover;
+        }
+        
+        span {
+          font-weight: 500;
+          color: #444;
+        }
+      }
+      
+      .viewPropertyButton {
+        background-color: #fece51;
+        color: #333;
+        padding: 12px 20px;
+        border-radius: 5px;
+        text-decoration: none;
+        font-weight: 500;
+        transition: background-color 0.2s;
+        
+        &:hover {
+          background-color: #e5b53f;
+        }
+      }
+    }
+  }
+}

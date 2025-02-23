@@ -1,0 +1,347 @@
+@import "../../responsive.scss";
+
+.adminPage {
+  height: 100%;
+  width: 100%;
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 20px;
+  overflow-y: auto;
+  
+  &.loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-size: 18px;
+    color: #666;
+  }
+
+  &.error {
+    color: #d32f2f;
+  }
+
+  .adminHeader {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 30px;
+    position: relative;
+    
+    .backToSite {
+      position: absolute;
+      left: 0;
+      top: 5px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      color: #333;
+      text-decoration: none;
+      font-weight: 500;
+      padding: 8px 12px;
+      border-radius: 5px;
+      background-color: #f5f5f5;
+      transition: background-color 0.3s;
+      
+      &:hover {
+        background-color: #e0e0e0;
+      }
+      
+      img {
+        width: 16px;
+        height: 16px;
+        transform: rotate(180deg);
+      }
+    }
+    
+    h1 {
+      text-align: center;
+      margin-bottom: 0;
+      color: #333;
+      padding-top: 20px;
+    }
+  }
+
+  .adminContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    
+    h2 {
+      font-weight: 500;
+      color: #333;
+      margin-bottom: 20px;
+    }
+    
+    .sectionHeader {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 20px;
+      
+      .errorContainer {
+        margin-top: 10px;
+        padding: 10px 15px;
+        background-color: #fff3e0;
+        border-left: 3px solid #ff9800;
+        border-radius: 4px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        
+        .errorMessage {
+          color: #e65100;
+          font-size: 14px;
+          margin: 0;
+        }
+        
+        .retryButton {
+          background-color: #ff9800;
+          color: white;
+          border: none;
+          padding: 5px 10px;
+          border-radius: 4px;
+          cursor: pointer;
+          font-size: 14px;
+          
+          &:hover {
+            background-color: #f57c00;
+          }
+        }
+      }
+    }
+    
+    .emptyState {
+      padding: 20px;
+      background-color: #f9f9f9;
+      border-radius: 10px;
+      text-align: center;
+      color: #777;
+    }
+    
+    .pendingPostsContainer {
+      background-color: white;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      
+      .pendingPostsList {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        
+        .pendingPostCard {
+          display: flex;
+          gap: 20px;
+          padding: 15px;
+          border-radius: 8px;
+          border: 1px solid #eee;
+          background-color: #fcfcfc;
+          
+          &:hover {
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+          }
+          
+          .postImageContainer {
+            width: 150px;
+            height: 120px;
+            
+            img {
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+              border-radius: 5px;
+            }
+            
+            @include sm {
+              width: 100px;
+              height: 80px;
+            }
+          }
+          
+          .postInfo {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            
+            h3 {
+              font-weight: 500;
+              margin: 0;
+              color: #333;
+            }
+            
+            .postAddress {
+              font-size: 14px;
+              color: #777;
+              margin: 0;
+            }
+            
+            .postPrice {
+              font-weight: 500;
+              color: #333;
+              margin: 0;
+            }
+            
+            .postMeta {
+              display: flex;
+              gap: 12px;
+              margin-top: 5px;
+              
+              span {
+                font-size: 13px;
+                color: #555;
+                background-color: #f0f0f0;
+                padding: 2px 8px;
+                border-radius: 4px;
+                
+                @include sm {
+                  font-size: 12px;
+                  padding: 2px 5px;
+                }
+              }
+            }
+            
+            .postOwner {
+              font-size: 13px;
+              color: #888;
+              margin: 8px 0 0 0;
+            }
+          }
+          
+          .postActions {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            justify-content: center;
+            
+            button {
+              padding: 8px 16px;
+              border: none;
+              border-radius: 5px;
+              cursor: pointer;
+              font-size: 14px;
+              transition: all 0.2s ease;
+              
+              &.viewButton {
+                background-color: #e0e0e0;
+                color: #333;
+                
+                &:hover {
+                  background-color: #d0d0d0;
+                }
+              }
+              
+              &.verifyButton {
+                background-color: #fece51;
+                color: #333;
+                
+                &:hover {
+                  background-color: #ffc107;
+                }
+                
+                &:disabled {
+                  background-color: #f0f0f0;
+                  color: #999;
+                  cursor: not-allowed;
+                }
+              }
+            }
+          }
+          
+          @include md {
+            flex-direction: column;
+            
+            .postImageContainer {
+              width: 100%;
+              height: 200px;
+            }
+            
+            .postActions {
+              flex-direction: row;
+              margin-top: 10px;
+              
+              button {
+                flex: 1;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .userListContainer {
+      background-color: white;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+
+      .tableContainer {
+        width: 100%;
+        overflow-x: auto;
+
+        .userTable {
+          width: 100%;
+          border-collapse: collapse;
+
+          th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #f0f0f0;
+          }
+
+          th {
+            font-weight: 500;
+            color: #333;
+          }
+
+          td {
+            color: #555;
+          }
+
+          .avatarCell {
+            width: 50px;
+
+            img {
+              width: 40px;
+              height: 40px;
+              border-radius: 50%;
+              object-fit: cover;
+            }
+          }
+        }
+      }
+    }
+
+    .statsContainer {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      
+      @include sm {
+        flex-direction: column;
+      }
+      
+      .statCard {
+        flex: 1;
+        min-width: 200px;
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        text-align: center;
+        
+        h3 {
+          font-weight: 500;
+          color: #555;
+          margin-bottom: 15px;
+        }
+        
+        .statValue {
+          font-size: 2.5rem;
+          font-weight: 700;
+          color: #fece51;
+        }
+      }
+    }
+  }
+} 
