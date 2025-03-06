@@ -1,0 +1,41 @@
+.list{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-bottom: 20px;
+  
+  .statusLegend {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+    background-color: #f9f9f9;
+    padding: 8px 12px;
+    border-radius: 5px;
+    
+    .legendItem {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 12px;
+      
+      .legendBadge {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        
+        &.availableBadge {
+          background-color: #4CAF50;
+        }
+        
+        &.soldBadge {
+          background-color: #f44336;
+        }
+        
+        &.occupiedBadge {
+          background-color: #ff9800;
+        }
+      }
+    }
+  }
+}
